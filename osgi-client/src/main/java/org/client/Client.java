@@ -9,7 +9,7 @@ public class Client implements BundleActivator {
     @Override
     public void start(BundleContext context) throws Exception {
         ServiceReference<ProductService> serviceReference =
-                context.getServiceReference(ProductService.class);
+                context.getServiceReference(ProductService.class);//referenciamos un servicio
 
         if (serviceReference != null) {
             ProductService productService = context.getService(serviceReference);
@@ -22,9 +22,9 @@ public class Client implements BundleActivator {
                 System.out.println("Client bundle: 'Laptop' is not available");
             }
 
-            context.ungetService(serviceReference);
+            context.ungetService(serviceReference);//liberar el servicio
         } else {
-            System.out.println("Client bundle: ProductService not found.");
+            System.out.println("Client bundle: ProductService not found.");// es si no existiera el servicio
         }
     }
 
